@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://mypatco.org</loc>
+        <image:image>
+            <image:loc>https://mypatco.org/Content/train.jpg</image:loc>
+            <image:caption>Patco Train</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/Lindenwold</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/Ashland</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/Woodcrest</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/Haddonfield</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/Westmount</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/Collingswood</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/Ferry%20Ave</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/Broadway</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/City%20Hall</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/8th%20&amp;%20Market%20St</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/12-13th%20&amp;%20Locust%20St</loc>
+    </url>
+    <url>
+        <loc>https://mypatco.org/Station/15-16th%20&amp;%20Locust%20St</loc>
+    </url>
+</urlset>
