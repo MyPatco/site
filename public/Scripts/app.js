@@ -52,7 +52,7 @@ app.config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider, $lo
 
 }]).controller('AppCtrl', function ($scope, $state, $mdSidenav, $mdDialog) {
 
-  $scope.List = ["Lindenwold", "Ashland", "Woodcrest", "Haddonfield", "Westmount", "Collingswood", "Ferry Ave", "Broadway",
+  $scope.List = ["Lindenwold", "Ashland", "Woodcrest", "Haddonfield", "Westmont", "Collingswood", "Ferry Ave", "Broadway",
     "City Hall", "8th & Market St", "9-10th & Locust St", "12-13th & Locust St", "15-16th & Locust St"
   ];
   $scope.state = $state;
