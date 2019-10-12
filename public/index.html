@@ -1,557 +1,65 @@
 <!DOCTYPE html>
-<html ng-app="mypatcoApp">
-
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" />
-  <link rel="canonical" href="https://dev.twitter.com/web/tweet-button">
-  <style>
-  button,
-html,
-input,
-select,
-textarea {
-  font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif;
-}
-
-md-list {
-  padding: 0;
-}
-
-.md-sidenav-left .md-button {
-  text-align: left;
-  margin: 0;
-  padding: 0 16px;
-  text-transform: none;
-  font-weight: 400;
-  font-size: initial;
-  line-height: 40px;
-  border-radius: 0px;
-  border-radius: 0;
-  cursor: pointer;
-  display: block;
-  align-items: inherit;
-  max-height: 40px;
-  overflow: hidden;
-  text-decoration: none;
-  white-space: normal;
-  width: 100%;
-}
-
-.md-sidenav-left .md-button.active {
-  background: rgb(158, 158, 158);
-  background: rgba(158, 158, 158, 0.3);
-}
-
-h2 {
-  font-weight: 400;
-  font-size: 19px;
-}
-
-body p,
-html p {
-  line-height: 1.846;
-}
-
-@media only screen and (max-device-width:480px) {
-  .angular-google-map-container {
-    height: 200px;
-  }
-}
-
-
-/* Have to set height explicity on ui-view
-        to prevent collapsing during animation*/
-
-.ui-view-container {
-  position: relative;
-  height: 65px;
-}
-
-.even {
-  background: #EDEDED;
-}
-
-.transition.ng-enter,
-.transition.ng-leave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  -webkit-transition: all .5s ease-in-out;
-  -moz-transition: all .5s ease-in-out;
-  -ms-transition: all .5s ease-in-out;
-  -o-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
-}
-
-.transition.ng-enter {
-  opacity: 0;
-  -webkit-transform: scale3d(0.5, 0.5, 0.5);
-  -moz-transform: scale3d(0.5, 0.5, 0.5);
-  -ms-transform: scale3d(0.5, 0.5, 0.5);
-  -o-transform: scale3d(0.5, 0.5, 0.5);
-  transform: scale3d(0.5, 0.5, 0.5);
-}
-
-.transition.ng-enter-active {
-  opacity: 1;
-  -webkit-transform: scale3d(1, 1, 1);
-  -moz-transform: scale3d(1, 1, 1);
-  -ms-transform: scale3d(1, 1, 1);
-  -o-transform: scale3d(1, 1, 1);
-  transform: scale3d(1, 1, 1);
-}
-
-.transition.ng-leave {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-.transition.ng-leave-active {
-  opacity: 0;
-  -webkit-transform: translate3d(100px, 0, 0);
-  -moz-transform: translate3d(100px, 0, 0);
-  -o-transform: translate3d(100px, 0, 0);
-  -ms-transform: translate3d(100px, 0, 0);
-  transform: translate3d(100px, 0, 0);
-}
-
-.md-secondary.md-button,
-.md-secondary.md-button.md-raised:hover {
-  color: white;
-  background-color: #009688;
-}
-
-.md-toolbar-tools {
-  color: white;
-}
-
-
-/* Let's get this party started */
-
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-
-/* Track */
-
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(153, 153, 153, 0.3);
-  -moz-box-shadow: inset 0 0 6px rgba(153, 153, 153, 0.3);
-  box-shadow: inset 0 0 6px rgba(153, 153, 153, 0.3);
-}
-
-
-/* Handle */
-
-::-webkit-scrollbar-thumb {
-  background: rgb(161, 161, 161);
-}
-
-::-webkit-scrollbar-thumb:window-inactive {
-  background: rgb(69, 69, 69);
-}
-
-small {
-  font-size: smaller;
-  font-size: 19px;
-}
-
-.md-default-theme .md-card-image,
-.md-card-image {
-  border-radius: 0px;
-}
-
-.md-button.md-accent:not(.md-raised),
-md-toolbar:not(.md-menu-toolbar) .md-button.md-accent:not(.md-raised) {
-  background-color: #009688;
-}
-
-.md-button-sm.md-fab {
-  line-height: 3.5rem;
-  width: 3.5rem;
-  height: 3.5rem;
-}
-
-.virtualRepeatdemoScrollTo #vertical-container { 
-  width: 100%;
-}
-
-.virtualRepeatdemoScrollTo .repeated-item {
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
-}
-
-md-dialog.dtp {
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color: #fff;
-    max-height: none;
-}
-
-
-.dtp *:focus {
-    outline: none !important;
-}
-
-.dtp table {
-    border-spacing: 0;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.dtp .table > tbody > tr > td,
-.dtp .table > tbody > tr > th,
-.dtp .table > tfoot > tr > td,
-.dtp .table > tfoot > tr > th,
-.dtp .table > thead > tr > td,
-.dtp .table > thead > tr > th {
-    padding: 8px;
-    line-height: 1.42857143;
-    vertical-align: top;
-    border-top: 1px solid #ddd;
-}
-
-.dtp, .dtp * {
-    box-sizing: border-box !important;
-}
-
-.dtp > .dtp-content {
-    max-width: 300px;
-    max-height: 500px;
-}
-
-.dtp div.dtp-date, .dtp div.dtp-time {
-    background: #8BC34A;
-    text-align: center;
-    color: #fff;
-    padding: 10px;
-}
-
-.dtp div.dtp-date > div {
-    padding: 0;
-    margin: 0;
-}
-
-.dtp div.dtp-actual-month {
-    font-size: 1.5em;
-}
-
-.dtp div.dtp-actual-num {
-    font-size: 3em;
-    line-height: 0.9;
-}
-
-.dtp div.dtp-actual-maxtime {
-    font-size: 3em;
-    line-height: 0.9;
-}
-
-.dtp div.dtp-actual-year {
-    font-size: 1.6em;
-    color: #DCEDC8;
-}
-
-.dtp div.dtp-year-btn {
-    font-size: 1.4em;
-    line-height: 30px;
-    cursor: pointer;
-    color: #DCEDC8;
-}
-
-.dtp div.dtp-year-btn-prev {
-    text-align: right;
-}
-
-
-.dtp div.dtp-year-btn-next {
-    text-align: left;
-}
-
-.dtp div.dtp-picker {
-    padding: 10px;
-    text-align: center;
-}
-
-.dtp div.dtp-picker-month, .dtp div.dtp-actual-time {
-    font-weight: 500;
-    text-align: center;
-}
-
-.dtp .dtp-close {
-    position: absolute;
-    top: 0.25em;
-    right: 5px;
-    font-size: 16px;
-}
-
-.dtp .dtp-close > a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.dtp .dtp-close > a > i {
-    font-size: 1em;
-}
-
-.dtp table.dtp-picker-days {
-    margin: 0;
-    min-height: 220px;
-}
-
-.dtp md-virtual-repeat-container.months {
-    height: 260px;
-}
-
-.dtp table.dtp-picker-days, .dtp table.dtp-picker-days tr, .dtp table.dtp-picker-days tr > td {
-    border: none;
-}
-
-.dtp table.dtp-picker-days tr > td {
-    font-size: 11px;
-    text-align: center;
-    padding: 0;
-}
-
-.dtp table.dtp-picker-days tr > td > span.dtp-select-day {
-    color: #BDBDBD !important;
-}
-.dtp table.dtp-picker-days tr > td > .dtp-select-day {
-    width: 36px;
-    height: 36px;
-    display: inline-block;
-}
-.dtp table.dtp-picker-days tr > td > .dtp-select-day, .dtp .dtp-picker-time > a {
-    color: #212121;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 50% !important;
-}
-
-.dtp table.dtp-picker-days tr > td > a.selected {
-    background: #8BC34A;
-    color: #fff;
-}
-
-.dtp table.dtp-picker-days tr > td > a:hover:not(.selected) {
-    background: #dddddd;
-}
-
-.dtp table.dtp-picker-days tr > th {
-    color: #757575;
-    text-align: center;
-    font-weight: 700;
-    padding: 4px 3px;
-}
-
-.dtp .p10 > a {
-    color: #689F38;
-    text-decoration: none;
-}
-
-.dtp .p10 {
-    width: 10%;
-    display: inline-block;
-}
-
-.dtp .p20 {
-    width: 20%;
-    display: inline-block;
-}
-
-.dtp .p60 {
-    width: 60%;
-    display: inline-block;
-}
-
-.dtp .p80 {
-    width: 80%;
-    display: inline-block;
-}
-
-.dtp a.dtp-meridien-am, .dtp a.dtp-meridien-pm {
-    position: relative;
-    top: 10px;
-    color: #212121;
-    font-weight: 500;
-    padding: 7px 5px;
-    border-radius: 50% !important;
-    text-decoration: none;
-    background: #eee;
-    font-size: 10px;
-}
-
-.dtp .dtp-actual-meridien a.selected {
-    background: #689F38;
-    color: #fff;
-}
-
-.dtp .dtp-picker-time > a {
-    display: block;
-    line-height: 23px;
-    padding: 3px 3px 3px 3px;
-}
-
-.dtp .dtp-picker-time {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    font-size: 1.1em;
-    border-radius: 50%;
-    cursor: pointer;
-    text-align: center !important;
-}
-
-.dtp .dtp-picker-time > a.dtp-select-hour.selected {
-    background: #689F38;
-    color: #fff;
-}
-
-.dtp .dtp-picker-time > a.dtp-select-hour.disabled, .dtp .dtp-picker-time > a.dtp-select-minute.disabled {
-    color: #757575;
-}
-
-.dtp .dtp-picker-time > a.dtp-select-minute.selected {
-    background: #8BC34A;
-    color: #fff;
-}
-
-.dtp div.dtp-picker-clock {
-    margin: 10px 20px 0 20px;
-    padding: 10px;
-    border-radius: 50% !important;
-    background: #eee;
-}
-
-.dtp-clock-center {
-    width: 15px;
-    height: 15px;
-    background: #757575;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 50;
-}
-
-.dtp .dtp-hand, .dtp .dtp-hour-hand {
-    position: absolute;
-    width: 4px;
-    margin-left: -2px;
-    background: #BDBDBD;
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -moz-transform-origin: bottom;
-    -ms-transform-origin: bottom;
-    -webkit-transform-origin: bottom;
-    transform-origin: bottom;
-    z-index: 1;
-}
-
-.dtp .dtp-minute-hand {
-    width: 2px;
-    margin-left: -1px;
-}
-
-.dtp .dtp-hand.on {
-    background: #8BC34A;
-}
-
-.dtp .dtp-buttons {
-    padding: 0 10px 10px 10px;
-    text-align: right;
-}
-
-.dtp.hidden, .dtp .hidden {
-    display: none;
-}
-
-.dtp .invisible {
-    visibility: hidden;
-}
-
-.dtp .left {
-    float: left;
-}
-
-.dtp .right {
-    float: right;
-}
-
-.dtp .clearfix {
-    clear: both;
-}
-
-.dtp .center {
-    text-align: center;
-}
-
-</style>
-<link rel="icon" type="image/png" sizes="48x48" href="https://mypatco.org/favicon.png">
-<link rel="alternate" href="android-app://com.anthonyfassett.apps.ridepatco" />
-<title>My Patco</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Come ride the finest trasportation system in the south State of New Jersey.">
-<meta name="theme-color" content="#0277BD">
-<base href="/">
-</head>
-
-<body layout="column" class="ng-cloak" ng-controller="AppCtrl">
-  <md-toolbar>
-    <div class="md-toolbar-tools" style="background-color: rgb(3,169,244);">
-<md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
-  <md-icon aria-label="Menu" class="material-icons">menu</md-icon>
-</md-button>
-<h2 style="line-height: 16px;">
-<a style="color:white;" ui-sref="Home"> My Patco <br />
-<small style="font-size:17px" ng-show="state.current.name == 'Station'" ng-bind="state.params.id"></small>
-</a>
-</h2>
-<span flex=""></span>
-</div>
-</md-toolbar>
-<div layout="row" flex>
-  <div layout="row" flex class="content-wrapper">
-    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2 ng-cloak" md-is-open="isSidenavOpen" md-component-id="left"
-      md-is-locked-open="$mdMedia('gt-sm')">
-      <ng-repeat ng-repeat="item in List track by $index">
-        <md-subheader ng-if="$index == 0" style="padding:0;">New Jersey</md-subheader>
-<md-subheader ng-if="$index == 9" style="padding:0;">Philadelphia</md-subheader>
-<a class="md-button md-default-theme" ui-sref="Station({id:(item)})" ui-sref-active="active" ng-bind="item"></a>
-</ng-repeat>
-</md-sidenav>
-<div layout="column" flex id="content">
-  <div map-lazy-load="https://maps.google.com/maps/api/js">
-    <ng-map center="39.95,-75.1" zoom="12"></ng-map>
-  </div>
-  <md-content layout="column" flex class="md-padding" style="background:#EDEDED">
-<md-progress-linear md-mode="indeterminate" ng-show="stateIsLoading"></md-progress-linear>
-<div ui-view class="at-view-slide-in-bottom at-view-slide-out-bottom transition"></div>
-</md-content>
-</div>
-</div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
-<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
-<!--<script src="//maps.google.com/maps/api/js?key=AIzaSyBsMF5CPqzB1pbX30kOroBRnNIZ8z1uVjI"></script>-->
-<!--<script src="ng-map.min.js"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
-<script src="/Scripts/timepicker.js"></script>
-<script src="/Scripts/app.js"></script>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.1.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.1.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.1.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.1.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.1.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    </div>
+    <p id="load">Firebase SDK Loading&hellip;</p>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
 </html>

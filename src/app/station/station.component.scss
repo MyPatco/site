@@ -1,0 +1,23 @@
+.fill-space {
+    // This fills the remaining space, by using flexbox.
+    // Every toolbar row uses a flexbox row layout.
+    flex: 1 1 auto;
+}
+
+.mat-list-base[dense] {
+    padding-top: 0;
+}
+
+.mat-list-item {
+    //border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+p {
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.mat-list-item:nth-child(odd) {
+    background: #C0C0C0;
+}

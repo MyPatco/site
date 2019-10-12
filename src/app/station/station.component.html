@@ -1,0 +1,34 @@
+<br />
+<mat-card>
+    <button mat-raised-button color="accent" *ngIf="afAuth.authState | async as user" (click)="saveStations()">
+        Update Stations
+    </button>
+    <mat-toolbar color="primary">
+        <mat-slide-toggle [checked]="checked" (change)="onChange()">
+            <span *ngIf="!checked">To Philadelphia</span>
+            <span *ngIf="checked">To New Jersey</span>
+        </mat-slide-toggle>
+        <span class="fill-space"></span> Info
+    </mat-toolbar>
+    <mat-toolbar color="accent">
+        <span>Depature</span>
+        <span class="fill-space"></span>
+        <span>Status</span>
+    </mat-toolbar>
+    <mat-list dense *ngFor="let station of stations">
+        <div *ngIf="checked">
+            <mat-list-item *ngFor="let item of station.eastBound">
+                <p>{{item.departure_time}}</p>
+                <span class="fill-space"></span>
+                <p>{{item.status}}</p>
+            </mat-list-item>
+        </div>
+        <div *ngIf="!checked">
+            <mat-list-item *ngFor="let item of station.westBound">
+                <p>{{item.departure_time}}</p>
+                <span class="fill-space"></span>
+                <p>{{item.status}}</p>
+            </mat-list-item>
+        </div>
+    </mat-list>
+</mat-card>
