@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Station } from './station.model';
 import { StationService } from './station.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-station',
@@ -14,7 +13,7 @@ export class StationComponent {
   stations: Station[];
   checked = false;
 
-  constructor(public stationService: StationService, public afAuth: AngularFireAuth, private route: ActivatedRoute, private router: Router) {
+  constructor(public stationService: StationService, private route: ActivatedRoute, private router: Router) {
     this.router.events.subscribe((e) => {
       console.log(this.route.snapshot.params.id);
       this.stationService
@@ -22,12 +21,6 @@ export class StationComponent {
         .subscribe(res => (this.stations = res));
     });
   }
-
-
-  saveStations(): void {
-    
-  }
-
   onChange() {
     this.checked = !this.checked;
   }

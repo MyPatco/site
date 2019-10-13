@@ -1,8 +1,5 @@
 <br />
 <mat-card>
-    <button mat-raised-button color="accent" *ngIf="afAuth.authState | async as user" (click)="saveStations()">
-        Update Stations
-    </button>
     <mat-toolbar color="primary">
         <mat-slide-toggle [checked]="checked" (change)="onChange()">
             <span *ngIf="!checked">To Philadelphia</span>
