@@ -1,12 +1,13 @@
 <mat-sidenav-container class="sidenav-container primary" md-theme="primary">
     <!-- [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"  -->
     <mat-sidenav #drawer class="sidenav" fixedInViewport [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) ? false : true">
-        <mat-toolbar>Patco Stations</mat-toolbar>
+        <mat-toolbar class="mat-primary">Patco Stations</mat-toolbar>
         <mat-nav-list>
             <div *ngFor="let item of ListofStations; let i = index">
                 <h3 matSubheader *ngIf="i == 0">New Jersey</h3>
                 <h3 matSubheader *ngIf="i == 9">Philadelphia</h3>
-                <a mat-list-item routerLink="/station/{{item}}" (click)="drawer.toggle()">{{item}}</a>
+                <a *ngIf="(isHandset$ | async)" mat-list-item routerLink="/station/{{item}}" (click)="drawer.toggle()">{{item}}</a>
+                <a *ngIf="!(isHandset$ | async)" mat-list-item routerLink="/station/{{item}}">{{item}}</a>
             </div>
         </mat-nav-list>
     </mat-sidenav>
@@ -27,11 +28,11 @@
                 <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-                <a mat-menu-item href="#">
+                <!-- <a mat-menu-item href="#">
                     <i>💬</i>
                     <span>Notifications</span>
-                </a>
-                <a mat-menu-item href="#">
+                </a> -->
+                <a mat-menu-item href="https://github.com/MyPatco/site/issues">
                     <i>💾</i>
                     <span>Report a Bug</span>
                 </a>

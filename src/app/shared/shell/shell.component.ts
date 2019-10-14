@@ -4,8 +4,6 @@ import { map, shareReplay } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, Input } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-
 
 @Component({
   selector: 'app-shell',

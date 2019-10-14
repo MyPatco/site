@@ -9,15 +9,23 @@
 }
 
 .mat-list-item {
-    //border-bottom: 1px solid #ddd;
     padding: 10px;
 }
 
-p {
+p,
+input {
     font-size: 20px;
     font-weight: lighter;
+    background: transparent;
+    border: none;
 }
 
 .mat-list-item:nth-child(odd) {
     background: #C0C0C0;
+}
+
+.mat-card {
+    padding: 0;
+    margin: 15px;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Station } from './station.model';
 import { StationService } from './station.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-station',
@@ -13,7 +14,8 @@ export class StationComponent {
   stations: Station[];
   checked = false;
 
-  constructor(public stationService: StationService, private route: ActivatedRoute, private router: Router) {
+  constructor(public stationService: StationService, private route: ActivatedRoute, private router: Router,
+    public afAuth: AngularFireAuth) {
     this.router.events.subscribe((e) => {
       console.log(this.route.snapshot.params.id);
       this.stationService

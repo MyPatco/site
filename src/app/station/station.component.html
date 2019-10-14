@@ -1,31 +1,55 @@
 <br />
-<mat-card>
-    <mat-toolbar color="primary">
-        <mat-slide-toggle [checked]="checked" (change)="onChange()">
-            <span *ngIf="!checked">To Philadelphia</span>
-            <span *ngIf="checked">To New Jersey</span>
-        </mat-slide-toggle>
-        <span class="fill-space"></span> Info
-    </mat-toolbar>
-    <mat-toolbar color="accent">
-        <span>Depature</span>
-        <span class="fill-space"></span>
-        <span>Status</span>
-    </mat-toolbar>
-    <mat-list dense *ngFor="let station of stations">
-        <div *ngIf="checked">
-            <mat-list-item *ngFor="let item of station.eastBound">
-                <p>{{item.departure_time}}</p>
-                <span class="fill-space"></span>
-                <p>{{item.status}}</p>
-            </mat-list-item>
-        </div>
-        <div *ngIf="!checked">
-            <mat-list-item *ngFor="let item of station.westBound">
-                <p>{{item.departure_time}}</p>
-                <span class="fill-space"></span>
-                <p>{{item.status}}</p>
-            </mat-list-item>
-        </div>
-    </mat-list>
-</mat-card>
+<div>
+    <mat-card class="mat-elevation-z2">
+        <mat-toolbar color="primary">
+            <mat-slide-toggle [checked]="checked" (change)="onChange()">
+                <span *ngIf="!checked">To Philadelphia</span>
+                <span *ngIf="checked">To New Jersey</span>
+            </mat-slide-toggle>
+            <span class="fill-space"></span> Info
+        </mat-toolbar>
+        <mat-toolbar color="accent">
+            <span>Depature</span>
+            <span class="fill-space"></span>
+            <span>Status</span>
+        </mat-toolbar>
+        <mat-list dense *ngFor="let station of stations">
+            <div *ngIf="checked">
+                <mat-list-item *ngFor="let item of station.eastBound">
+                    <!-- <div *ngIf="(afAuth.authState | async)">
+                        <div class="default-time-example">
+                            <input aria-label="default time" [ngxTimepicker]="defaultValue" [value]="item.departure_time" readonly>
+                            <ngx-material-timepicker #defaultValue></ngx-material-timepicker>
+                        </div>
+                    </div> -->
+                    <!-- <div *ngIf="!(afAuth.authState | async)"> -->
+                    <p>{{item.departure_time}}</p>
+                    <!-- </div> -->
+                    <span class="fill-space"></span>
+                    <!-- <button *ngIf="(afAuth.authState | async)" mat-raised-button color="accent" (click)="saveStations()">
+                    {{item.status}}
+                </button> -->
+                    <p>{{item.status}}</p>
+                </mat-list-item>
+            </div>
+            <div *ngIf="!checked">
+                <mat-list-item *ngFor="let item of station.westBound">
+                    <!-- <div *ngIf="(afAuth.authState | async)">
+                        <div class="default-time-example">
+                            <input aria-label="default time" [ngxTimepicker]="defaultValue" [value]="item.departure_time" readonly>
+                            <ngx-material-timepicker #defaultValue></ngx-material-timepicker>
+                        </div>
+                    </div> -->
+                    <div>
+                        <p>{{item.departure_time}}</p>
+                    </div>
+                    <span class="fill-space"></span>
+                    <!-- <button *ngIf="(afAuth.authState | async)" mat-raised-button color="accent" (click)="saveStations()">
+                        {{item.status}}
+                    </button> -->
+                    <p>{{item.status}}</p>
+                </mat-list-item>
+            </div>
+        </mat-list>
+    </mat-card>
+</div>
