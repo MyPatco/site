@@ -1,0 +1,42 @@
+<mat-sidenav-container class="sidenav-container primary" md-theme="primary">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) ? false : true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'">
+        <mat-toolbar class="mat-primary">Patco Stations</mat-toolbar>
+        <mat-nav-list>
+            <div *ngFor="let item of ListofStations; let i = index">
+                <h3 matSubheader *ngIf="i == 0">New Jersey</h3>
+                <h3 matSubheader *ngIf="i == 9">Philadelphia</h3>
+                <a *ngIf="(isHandset$ | async)" mat-list-item routerLink="/station/{{item}}" (click)="drawer.toggle()">{{item}}</a>
+                <a *ngIf="!(isHandset$ | async)" mat-list-item routerLink="/station/{{item}}">{{item}}</a>
+            </div>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <span class="logo" routerLink="/">My Patco</span>
+            <span class="fill-space"></span>
+            <div *ngIf="!(isHandset$ | async)">
+                <a mat-button routerLink="/login" *ngIf="!(afAuth.authState | async)">Login</a>
+                <a mat-button routerLink="/login" *ngIf="afAuth.authState | async as user">
+                    <img class="avatar" [src]="user.photoURL || 'assets/default-user.svg'"> Profile
+                </a>
+            </div>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu for Train Stations">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <!-- <a mat-menu-item href="#">
+                    <i>💬</i>
+                    <span>Notifications</span>
+                </a> -->
+                <a mat-menu-item href="https://github.com/MyPatco/site/issues">
+                    <i>💾</i>
+                    <span>Report a Bug</span>
+                </a>
+            </mat-menu>
+        </mat-toolbar>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>
