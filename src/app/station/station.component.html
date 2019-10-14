@@ -1,4 +1,3 @@
-<br />
 <div>
     <mat-card class="mat-elevation-z2">
         <mat-toolbar color="primary">
@@ -13,7 +12,7 @@
             <span class="fill-space"></span>
             <span>Status</span>
         </mat-toolbar>
-        <mat-list dense *ngFor="let station of stations">
+        <mat-list dense *ngFor="let station of stations  | async">
             <div *ngIf="checked">
                 <mat-list-item *ngFor="let item of station.eastBound">
                     <!-- <div *ngIf="(afAuth.authState | async)">

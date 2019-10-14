@@ -5,8 +5,8 @@
             <div *ngFor="let item of ListofStations; let i = index">
                 <h3 matSubheader *ngIf="i == 0">New Jersey</h3>
                 <h3 matSubheader *ngIf="i == 9">Philadelphia</h3>
-                <a *ngIf="(isHandset$ | async)" mat-list-item routerLink="/station/{{item}}" (click)="drawer.toggle()">{{item}}</a>
-                <a *ngIf="!(isHandset$ | async)" mat-list-item routerLink="/station/{{item}}">{{item}}</a>
+                <a *ngIf="(isHandset$ | async)" routerLinkActive="active-link" mat-list-item routerLink="/station/{{item}}" (click)="drawer.toggle()">{{item}}</a>
+                <a *ngIf="!(isHandset$ | async)" routerLinkActive="active-link" mat-list-item routerLink="/station/{{item}}">{{item}}</a>
             </div>
         </mat-nav-list>
     </mat-sidenav>

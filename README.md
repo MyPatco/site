@@ -48,3 +48,4 @@ export const environment = {
 
 
 5.  Run `ng serve`
+6. For Production `ng build --prod` 
