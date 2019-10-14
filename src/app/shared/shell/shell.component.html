@@ -1,6 +1,5 @@
 <mat-sidenav-container class="sidenav-container primary" md-theme="primary">
-    <!-- [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"  -->
-    <mat-sidenav #drawer class="sidenav" fixedInViewport [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) ? false : true">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) ? false : true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'">
         <mat-toolbar class="mat-primary">Patco Stations</mat-toolbar>
         <mat-nav-list>
             <div *ngFor="let item of ListofStations; let i = index">
