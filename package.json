@@ -32,7 +32,7 @@
         "@angular/pwa": "^0.803.2",
         "@angular/router": "~8.2.3",
         "@angular/service-worker": "~8.2.3",
-        "@nestjs/common": "^6.0.0",
+        "@nestjs/common": "^9.0.11",
         "@nestjs/core": "^6.0.0",
         "@nestjs/ng-universal": "^2.0.1",
         "@nestjs/platform-express": "^6.0.0",
