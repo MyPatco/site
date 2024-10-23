@@ -35,7 +35,7 @@
         "@nestjs/common": "^6.0.0",
         "@nestjs/core": "^6.0.0",
         "@nestjs/ng-universal": "^2.0.1",
-        "@nestjs/platform-express": "^6.0.0",
+        "@nestjs/platform-express": "^10.4.6",
         "@nguniversal/express-engine": "^8.0.0",
         "@nguniversal/module-map-ngfactory-loader": "^8.0.0",
         "firebase": ">= 5.5.7 <7",
