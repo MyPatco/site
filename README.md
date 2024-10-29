@@ -1,6 +1,3 @@
-# **DEPRECATED** - no longer actively maintained
-
-
 # My Patco
 
 My Patco is an Angular PWA (Progressive Web Applications) powered by Firebase, for the south new jersey transit.
