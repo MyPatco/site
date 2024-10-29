@@ -23,7 +23,7 @@ My Patco is an Angular PWA (Progressive Web Applications) powered by Firebase, f
 
 2.  Create a project at https://firebase.google.com/ and grab your web config:
 
-![](https://github.com/MyPatco/site/master/src/assets/config_example.png)
+![](src/assets/config_example.png)
 
 3.  Add the config to your Angular environment
 
