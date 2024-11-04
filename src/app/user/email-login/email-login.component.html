@@ -1,4 +1,4 @@
-<mat-card>
+<!-- <mat-card>
   <div *ngIf="isSignup">
     <h3>Create Account</h3>
 
@@ -20,7 +20,7 @@
   </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field [color]="email.valid && 'accent'">
+     <mat-form-field [color]="email.valid && 'accent'">
       <input
         matInput
         formControlName="email"
@@ -32,7 +32,7 @@
       <mat-error *ngIf="email.invalid && email.dirty">
         You must enter a valid email address
       </mat-error>
-    </mat-form-field>
+    </mat-form-field> 
 
     <mat-form-field [color]="email.valid && 'accent'" *ngIf="!isPasswordReset">
       <input
@@ -46,10 +46,10 @@
       <mat-error *ngIf="password.invalid && password.dirty">
         Password must be at least 6 characters long
       </mat-error>
-    </mat-form-field>
+    </mat-form-field> 
 
-    <mat-form-field
-      [color]="passwordDoesMatch ? 'accent' : 'warn'"
+   [color]="passwordDoesMatch ? 'accent' : 'warn'" 
+   <mat-form-field      
       *ngIf="isSignup"
     >
       <input
@@ -62,10 +62,10 @@
 
       <mat-error *ngIf="passwordConfirm.dirty && !passwordDoesMatch">
         Password does not match
-      </mat-error>
-    </mat-form-field>
+      </mat-error> 
+    </mat-form-field> 
 
-    <mat-error class="server-error">{{ serverMessage }}</mat-error>
+   <mat-error class="server-error">{{ serverMessage }}</mat-error> 
 
     <button
       *ngIf="isPasswordReset"
@@ -94,4 +94,4 @@
   >
     Forgot password?
   </button>
-</mat-card>
+</mat-card> -->

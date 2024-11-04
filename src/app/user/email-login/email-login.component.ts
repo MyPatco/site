@@ -4,7 +4,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { AngularFireAuth } from '@angular/fire/auth';
+//import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-email-login',
@@ -19,7 +19,7 @@ export class EmailLoginComponent implements OnInit {
 
   serverMessage: string;
 
-  constructor(private afAuth: AngularFireAuth, private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {} //private afAuth: AngularFireAuth, 
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -73,20 +73,20 @@ export class EmailLoginComponent implements OnInit {
     const email = this.email.value;
     const password = this.password.value;
 
-    try {
-      if (this.isLogin) {
-        await this.afAuth.auth.signInWithEmailAndPassword(email, password);
-      }
-      if (this.isSignup) {
-        await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
-      }
-      if (this.isPasswordReset) {
-        await this.afAuth.auth.sendPasswordResetEmail(email);
-        this.serverMessage = 'Check your email';
-      }
-    } catch (err) {
-      this.serverMessage = err;
-    }
+    // try {
+    //   if (this.isLogin) {
+    //     await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    //   }
+    //   if (this.isSignup) {
+    //     await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+    //   }
+    //   if (this.isPasswordReset) {
+    //     await this.afAuth.auth.sendPasswordResetEmail(email);
+    //     this.serverMessage = 'Check your email';
+    //   }
+    // } catch (err) {
+    //   this.serverMessage = err;
+    // }
 
     this.loading = false;
   }

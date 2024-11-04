@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { StationComponent } from './station/station.component';
-import { AuthGuard } from './user/auth.guard';
+//import { AuthGuard } from './user/auth.guard';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'station/:id', component: StationComponent },
   {
