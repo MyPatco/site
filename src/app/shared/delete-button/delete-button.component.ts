@@ -6,7 +6,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./delete-button.component.scss']
 })
 export class DeleteButtonComponent {
-  canDelete: boolean;
+  canDelete!: boolean;
 
   @Output() delete = new EventEmitter<boolean>();
 

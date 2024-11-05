@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class StationComponent implements OnInit {
 
-  stations:  Observable<Station[]>;
+  stations!:  Observable<Station[]>;
   checked = false;
 
   constructor(public stationService: StationService, private route: ActivatedRoute,

@@ -12,12 +12,12 @@ import {
   styleUrls: ['./email-login.component.scss']
 })
 export class EmailLoginComponent implements OnInit {
-  form: FormGroup;
+  form!: FormGroup;
 
   type: 'login' | 'signup' | 'reset' = 'signup';
   loading = false;
 
-  serverMessage: string;
+  serverMessage!: string;
 
   constructor(private fb: FormBuilder) {} //private afAuth: AngularFireAuth, 
 
@@ -32,7 +32,7 @@ export class EmailLoginComponent implements OnInit {
     });
   }
 
-  changeType(val) {
+  changeType(val: any) {
     this.type = val;
   }
 
@@ -63,15 +63,15 @@ export class EmailLoginComponent implements OnInit {
     if (this.type !== 'signup') {
       return true;
     } else {
-      return this.password.value === this.passwordConfirm.value;
+      return false;//this.password.value === this.passwordConfirm.value;
     }
   }
 
   async onSubmit() {
     this.loading = true;
 
-    const email = this.email.value;
-    const password = this.password.value;
+    //const email = this.email.value;
+    //const password = this.password.value;
 
     // try {
     //   if (this.isLogin) {

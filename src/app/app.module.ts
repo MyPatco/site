@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatCardModule } from '@angular/material/card';
 
 // App Modules
 import { AppComponent } from './app.component';
@@ -37,8 +38,9 @@ import { getPerformance, providePerformance } from '@angular/fire/performance';
     AppRoutingModule,    
     BrowserAnimationsModule,
     MatSlideToggleModule,
-    SharedModule,
+    SharedModule,    
     UserModule,
+    MatCardModule,
     // AngularFireModule.initializeApp(environment.firebase),
     // AngularFirestoreModule,
     // AngularFireAuthModule,
