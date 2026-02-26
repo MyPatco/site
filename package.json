@@ -34,7 +34,7 @@
     "@angular/ssr": "18.2.1",
     "@fortawesome/fontawesome-free": "6.6.0",
     "@popperjs/core": "^2.11.8",
-    "express": "^4.21.1",
+    "express": "^4.22.1",
     "luxon": "^3.5.0",
     "ng2-adsense": "^14.0.0",
     "ngx-material-timepicker": "^13.1.1",
